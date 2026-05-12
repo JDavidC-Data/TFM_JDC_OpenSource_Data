@@ -1,46 +1,36 @@
 # Framework de Validación Cruzada para la Evaluación de Métodos de Detección de Anomalías en Redes Eléctricas Inteligentes
 
-## Descripción General
 
-La fiabilidad del suministro eléctrico y la detección de fraude energético requieren cada vez más el uso de herramientas basadas en Inteligencia Artificial. En particular, la detección y clasificación automática de anomalías en datos de consumo energético se ha convertido en una línea de investigación relevante dentro del contexto de las redes eléctricas inteligentes.
+## Resumen
 
-En la literatura científica se han propuesto múltiples enfoques para abordar este problema, entre ellos:
+La fiabilidad del suministro y la detección de fraude en redes eléctricas requiere el uso de herramientas basadas en Inteligencia Artificial. En particular, nos interesa la automatización de la detección de anomalías y su clasificación en datos de consumo energético. La literatura ofrece diversos enfoques para este problema: desde modelos no supervisados basados en LSTM con Autoencoder, hasta métodos que combinan clustering K-means con redes LSTM para pronosticar consumo, pasando por modelos como Random Forest y XGBoost aplicados a la clasificación de fallos. Todos ellos se validan sobre datasets públicos de naturaleza diversa —desde registros de consumo en intervalos de 15 minutos de cientos de clientes hasta datos residenciales de alta granularidad temporal o mediciones de tensión y corriente etiquetadas con distintos tipos de falta—, pero en todos los casos la validación se limita a un único conjunto de datos. Esta práctica impide evaluar la transferibilidad de los modelos y evidencia la ausencia de esquemas de validación cruzada entre conjuntos públicos.
 
-- Modelos no supervisados basados en LSTM Autoencoder
-- Arquitecturas híbridas que combinan K-Means y LSTM
-- Modelos supervisados basados en Random Forest
-- Métodos de clasificación utilizando XGBoost
-
-Estas soluciones suelen validarse utilizando datasets públicos de distinta naturaleza, incluyendo:
-
-- Registros de consumo energético residencial
-- Datos de medidores inteligentes en intervalos de 15 minutos
-- Mediciones eléctricas etiquetadas con diferentes tipos de fallo
-
-Sin embargo, la mayoría de los trabajos reportados en la literatura validan sus modelos únicamente sobre un solo conjunto de datos, limitando el análisis de robustez, transferibilidad y capacidad de generalización de los modelos.
+Para abordar esta carencia, realizamos una comparativa de dichas soluciones con el objetivo de evaluar su robustez y capacidad de generalización mediante un marco de validación cruzada, aplicando cada implementación tanto a su dataset original como a los de los demás estudios seleccionados, siempre con datos públicos. La evaluación se llevará a cabo replicando las implementaciones originales y midiendo su desempeño en términos de precisión, recall y F1-score en cada dataset, cuantificando así la estabilidad o degradación de cada método. Más allá del análisis comparativo, se busca ofrecer a la comunidad un conjunto heterogéneo de datasets y herramientas documentadas que permita evaluar futuras soluciones de forma estandarizada. Tanto los datasets normalizados como el código de evaluación se publicarán en este repositorio open-source con instrucciones para facilitar su uso en futuras comparativas.
 
 ---
 
-## Problema de Investigación
+## Objetivos
 
-Actualmente no existe un esquema estandarizado de validación cruzada entre datasets públicos para métodos de detección de anomalías aplicados a redes eléctricas inteligentes.
-
-Como consecuencia, el desempeño reportado por muchos modelos puede depender significativamente de las características particulares del dataset utilizado durante la validación experimental.
-
-Este repositorio busca abordar dicha limitación mediante un framework experimental que permita reproducir y evaluar múltiples enfoques sobre diferentes datasets públicos bajo condiciones homogéneas.
+- Reproducir implementaciones de métodos de detección de anomalías en sistemas eléctricos reportados en la literatura.
+- Construir un marco de validación cruzada que evalúe cada método sobre múltiples datasets públicos.
+- Cuantificar la robustez y capacidad de generalización de cada solución.
+- Proporcionar un conjunto documentado y reutilizable de datasets normalizados y código de evaluación.
 
 ---
 
-## Objetivo del Proyecto
+## Datasets incluidos
 
-El objetivo principal de este proyecto es evaluar la robustez y capacidad de generalización de diferentes métodos de detección de anomalías y clasificación de fallos mediante un esquema de validación cruzada entre datasets públicos.
+| Dataset | Origen | Descripción | Referencia |
+|---------|--------|-------------|------------|
+| **ElectricityLoadDiagrams20112014** | Repositorio UCI | 370 clientes, 140.256 registros de consumo eléctrico cada 15 minutos (kW). Sin valores faltantes. Datos de 2011 a 2014. | [DOI: 10.24432/C58C86](https://doi.org/10.24432/C58C86) |
+| **Individual Household Electric Power Consumption** | Repositorio UCI | Consumo energético residencial de alta granularidad temporal con mediciones por minuto. Aproximadamente 2.075.259 registros de diciembre de 2006 a noviembre de 2010. Incluye variables como voltaje, corriente y submetering. | [DOI: 10.24432/C58K54](https://doi.org/10.24432/C58K54) |
+| **Electrical Fault Detection and Classification** | Kaggle | 12.000 registros de mediciones de tensión y corriente trifásica, frecuencia y THD, etiquetados con distintos tipos de falta (línea a tierra, línea a línea, trifásica, etc.). | [Kaggle](https://www.kaggle.com/code/jaison14/electrical-fault-detection-and-classification/output) |
 
-Para ello, cada implementación será evaluada:
+Cada dataset cuenta con su propia documentación detallada dentro de su carpeta correspondiente:
 
-1. Sobre el dataset original reportado en el artículo correspondiente.
-2. Sobre los datasets utilizados por los demás estudios seleccionados.
-
-Esto permitirá cuantificar la estabilidad o degradación del desempeño de cada modelo frente a cambios en la distribución de los datos.
+- `./electricity_load_diagrams/dataset_description.md`
+- `./household_power_consumption/dataset_description.md`
+- `./electrical_fault_detection/dataset_description.md`
 
 ---
 
@@ -85,21 +75,6 @@ El proyecto contempla el uso de múltiples datasets públicos relacionados con:
 - Clasificación de fallos eléctricos
 
 La documentación y descripción detallada de cada dataset estará disponible en la carpeta `/datasets`.
-
----
-
-## Modelos Comparados
-
-Actualmente se contempla la evaluación de los siguientes enfoques:
-
-| Modelo | Categoría | Tipo |
-|---|---|---|
-| LSTM Autoencoder | Deep Learning | No supervisado |
-| K-Means + LSTM | Híbrido | Semi-supervisado |
-| Random Forest | Ensemble Learning | Supervisado |
-| XGBoost | Gradient Boosting | Supervisado |
-
-Durante el desarrollo del proyecto podrán incorporarse nuevos modelos relevantes identificados en la literatura.
 
 ---
 
