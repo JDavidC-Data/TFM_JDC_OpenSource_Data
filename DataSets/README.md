@@ -26,7 +26,7 @@ Cada dataset cuenta con documentación específica asociada a:
 | Dataset | Descripción General | Frecuencia | Fuente |
 |---|---|---|---|
 | ElectricityLoadDiagrams20112014 | Consumo eléctrico de 370 clientes entre 2011 y 2014 | 15 minutos | UCI |
-| Individual Household Electric Power Consumption | Consumo eléctrico doméstico de un hogar durante casi 4 años | 1 minuto | UCI |
+| Individual Household Electric Power Consumption y Irish Power Data-set | Consumo eléctrico doméstico de un hogar durante casi 4 años y dataset Irlandes de consumo Householding | 1 minuto | UCI - GitHub (Public) |
 | Electrical Fault Detection and Classification | Variables eléctricas etiquetadas con tipos de fallos eléctricos | Variables instantáneas | Kaggle |
 
 ---
