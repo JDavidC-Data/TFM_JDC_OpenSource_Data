@@ -33,7 +33,8 @@ Cada dataset cuenta con su propia documentación detallada dentro de su carpeta 
 - `./electrical_fault_detection/dataset_description.md`
 
 ---
-
+Kimleang. (2023). KL-DL-ML/federated-learning-autoencoder-anomaly-detection: Release to get DOI (1.0). Zenodo. https://doi.org/10.5281/zenodo.8036661
+----------
 ## Contribuciones Principales
 
 Este trabajo busca aportar:
