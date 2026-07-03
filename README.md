@@ -1,36 +1,78 @@
-# Framework de Validación Cruzada para Detección de Anomalías en Redes Eléctricas
+# Framework de Validación Cruzada para Detección de Anomalías en Redes Eléctricas Inteligentes
 
 **Trabajo Fin de Máster** — Juan David Colorado Rodríguez (2026)
 
-Este repositorio contiene **datasets**, código y resultados del TFM que compara diferentes métodos de detección de anomalías en redes eléctricas inteligentes (Smart Grids) usando **validación cruzada**.
+Este repositorio contiene los recursos del TFM que evalúa la **robustez y capacidad de generalización** de distintos métodos de detección de anomalías mediante **validación cruzada** entre datasets.
 
 ---
 
-## ¿Qué es A1, A2 y A3?
+## Nomenclatura (Muy Importante)
 
-Para que sea fácil de entender, usamos esta nomenclatura simple:
+- **DS1** = ElectricityLoadDiagrams20112014  
+- **DS2** = Individual Household Electric Power Consumption  
+- **DS3** = Electrical Fault Detection and Classification  
 
-- **A1** → Método de **Fenza et al. (2019)**: Usa **K-Means + LSTM** para detectar anomalías en consumo eléctrico.
-- **A2** → Método de **Zhang et al. (2021)**: Usa **Transformer + K-Means** para predecir consumo y detectar anomalías.
-- **A3** → Método de **Al-Karkhi et al. (2025)**: Usa algoritmos de **Machine Learning supervisado** (Random Forest, XGBoost, etc.) para clasificar tipos de fallos eléctricos.
+- **A1** = Método de Fenza et al. (2019) → K-Means + LSTM  
+- **A2** = Método de Zhang et al. (2021) → Transformer + K-Means  
+- **A3** = Método de Al-Karkhi et al. (2025) → Modelos supervisados (Random Forest, XGBoost, etc.)
 
-El objetivo principal del TFM es probar estos tres métodos **no solo en sus datos originales**, sino también en los datos de los otros métodos (validación cruzada).
-
----
-
-## Datasets Incluidos
-
-| Dataset | Nombre Corto | Fuente | Granularidad | Usado principalmente en |
-|---------|--------------|--------|--------------|-------------------------|
-| ElectricityLoadDiagrams20112014 | DS1 | UCI | 15 minutos | **A1** |
-| Individual Household Electric Power Consumption | DS2 | UCI | 1 minuto | **A2** |
-| Electrical Fault Detection and Classification | DS3 | Kaggle | Instantánea | **A3** |
+**Ejemplo**: `DS1-A2` significa aplicar el método **A2** sobre el dataset **DS1** (validación cruzada).
 
 ---
 
-## Cómo Empezar (Muy Fácil)
+## Datasets
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/JDavidC-Data/TFM_JDC_OpenSource_Data.git
-   cd TFM_JDC_OpenSource_Data
+| Dataset | Nombre | Fuente | Granularidad | Principalmente usado en |
+|---------|--------|--------|--------------|-------------------------|
+| DS1 | ElectricityLoadDiagrams20112014 | UCI | 15 minutos | A1 |
+| DS2 | Individual Household Electric Power Consumption | UCI | 1 minuto | A2 |
+| DS3 | Electrical Fault Detection and Classification | Kaggle | Instantánea | A3 |
+
+---
+
+## Notebooks Disponibles (por combinación)
+
+Cada notebook corresponde a una combinación **Dataset + Método**:
+
+### Validaciones Originales
+- `DS1-A1.ipynb` → Método A1 en su dataset original
+- `DS2-A2.ipynb` → Método A2 en su dataset original  
+- `DS3-A3.ipynb` → Método A3 en su dataset original
+
+### Validaciones Cruzadas
+- `DS1-A2.ipynb`
+- `DS2-A3.ipynb`
+- `DS3-A2.ipynb` 
+
+---
+
+## Cómo Navegar el Repositorio
+
+1. Lee primero `docs/guia_rapida.md`
+2. Explora los datasets en `datasets/`
+3. Ejecuta los notebooks en la carpeta `notebooks/`
+
+---
+
+## Estructura del Repositorio
+
+- **`datasets/`** → Datos + documentación detallada de cada DS
+- **`notebooks/`** → Todos los experimentos (uno por combinación DS-Ay)
+- **`src/`** → Código modular reutilizable
+- **`results/`** → Resultados, tablas y figuras del TFM
+- **`docs/`** → Guías para el usuario
+- **`references/`** → Artículos científicos
+
+---
+
+**Licencia:** MIT  
+**Autor:** Juan David Colorado Rodríguez
+
+---
+## Cómo Usar Este Repositorio
+
+```bash
+git clone https://github.com/JDavidC-Data/TFM_JDC_OpenSource_Data.git
+cd TFM_JDC_OpenSource_Data
+pip install -r requirements.txt
+jupyter lab
