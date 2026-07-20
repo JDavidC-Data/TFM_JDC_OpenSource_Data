@@ -1,132 +1,54 @@
-# Datasets Utilizados
+# Datasets
 
-Este proyecto utiliza múltiples datasets públicos relacionados con:
+Esta carpeta contiene los tres conjuntos de datos públicos utilizados en el Trabajo Fin de Máster:
 
-- consumo energético residencial,
-- redes eléctricas inteligentes,
-- detección de anomalías,
-- clasificación de fallos eléctricos,
-- y análisis de series temporales.
+- **DS1**: ElectricityLoadDiagrams20112014
+- **DS2**: Individual Household Electric Power Consumption
+- **DS3**: Electrical Fault Detection and Classification
 
-Cada dataset cuenta con documentación específica asociada a:
+Cada dataset se encuentra en su propia subcarpeta con el identificador correspondiente (DS1/, DS2/, DS3/). Dentro de cada una encontrarás:
 
-- origen y referencia bibliográfica,
-- DOI oficial,
-- estructura de los datos,
-- distribución de variables,
-- frecuencia temporal,
-- posibles aplicaciones,
-- estrategias de preprocesamiento,
-- y consideraciones experimentales.
+- El archivo de datos original (en su formato nativo, CSV o TXT).
+- Un archivo `README.md` con la descripción detallada de ese dataset (variables, estructura, licencia, etc.).
+- (Opcional) scripts de descarga o notas adicionales.
 
 ---
 
-# Datasets Incluidos
+## 📋 Resumen de los datasets
 
-| Dataset | Descripción General | Frecuencia | Fuente |
-|---|---|---|---|
-| ElectricityLoadDiagrams20112014 | Consumo eléctrico de 370 clientes entre 2011 y 2014 | 15 minutos | UCI |
-| Individual Household Electric Power Consumption y Irish Power Data-set | Consumo eléctrico doméstico de un hogar durante casi 4 años y dataset Irlandes de consumo Householding | 1 minuto - 30 minutos| UCI - ISSDA (GitHub - Public) |
-| Electrical Fault Detection and Classification | Variables eléctricas etiquetadas con tipos de fallos eléctricos | Variables instantáneas | Kaggle |
-
----
-
-# Documentación Individual
-
-## 1. ElectricityLoadDiagrams20112014
-
-Dataset orientado al análisis de consumo energético multicliente y ampliamente utilizado en problemas de forecasting y detección de anomalías.
-
-Documentación:
-
-```text
-./electricity_load_diagrams/dataset_description.md
-```
-
-DOI oficial:
-
-https://doi.org/10.24432/C58C86
+| Identificador | Nombre oficial | Fuente | Enlace | Uso en el TFM |
+|---------------|----------------|--------|--------|---------------|
+| **DS1** | ElectricityLoadDiagrams20112014 | UCI Machine Learning Repository | [UCI](https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams20112014) | Reproducción de A1 y evaluación cruzada con A2 |
+| **DS2** | Individual Household Electric Power Consumption | UCI Machine Learning Repository | [UCI](https://archive.ics.uci.edu/ml/datasets/Individual+household+electric+power+consumption) | Reproducción de A2 y evaluación cruzada con A1 y A3 |
+| **DS3** | Electrical Fault Detection and Classification | Kaggle | [Kaggle](https://www.kaggle.com/datasets/... ) *(buscar enlace exacto)* | Reproducción de A3 y adaptación para A2 |
 
 ---
 
-## 2. Individual Household Electric Power Consumption y IRISH Social Science Data
 
-Dataset de consumo energético residencial de alta granularidad temporal utilizado en tareas de series temporales, predicción energética y análisis de comportamiento eléctrico doméstico.
+## ⚠️ Importante: Descarga y colocación
 
-Documentación:
+Los datasets originales son de acceso público, pero no todos pueden redistribuirse libremente. Por esta razón:
 
-```text
-./household_power_consumption/dataset_description.md
-```
+- **Si el dataset lo permite**, el archivo original ya está incluido en la subcarpeta correspondiente.
+- **Si no se permite la redistribución**, encontrarás un enlace de descarga y las instrucciones para obtenerlo y colocarlo en la carpeta correcta.
 
-DOI oficial:
-
-https://doi.org/10.24432/C58K54
-
-Irish Social Science Data Archive
-
-https://github.com/wwzjustin/CER-Smart-Meter-Project-by-Irish-Social-Science-Data-Archive/blob/master/README.md
+En cualquier caso, consulta el `README.md` de cada subcarpeta para conocer la procedencia exacta y las condiciones de uso.
 
 ---
 
-## 3. Electrical Fault Detection and Classification
+## 📝 Notas sobre licencias y atribuciones
 
-Dataset orientado a clasificación de fallos eléctricos mediante variables eléctricas etiquetadas, utilizado en modelos supervisados de detección y clasificación de anomalías.
-
-Documentación:
-
-```text
-./electrical_fault_detection/dataset_description.md
-```
-
-Fuente:
-
-https://www.kaggle.com/code/jaison14/electrical-fault-detection-and-classification/output
+- **DS1**: Publicado por Trindade (2015) en UCI. Licencia: uso académico sin restricciones, pero se debe citar la fuente.
+- **DS2**: Publicado por Hebrail & Berard (2012) en UCI. Licencia: uso académico, citar la fuente.
+- **DS3**: Publicado en Kaggle por Al-Karkhi et al. (2025). Verificar licencia específica en la página de Kaggle.
 
 ---
 
-# Objetivo dentro del Proyecto
+## 🔄 Reproducibilidad
 
-Los datasets serán utilizados para:
-
-- validación cruzada entre modelos,
-- análisis de generalización,
-- comparación de robustez,
-- evaluación de transferencia entre dominios,
-- y construcción de un framework experimental reproducible.
+Todos los experimentos del TFM se realizaron con las versiones exactas de estos datasets, descargados en las fechas indicadas en el TFM (sección 4.1). Para garantizar la reproducibilidad, se han documentado los parámetros de carga y preprocesamiento en los notebooks y en el código fuente.
 
 ---
 
-# Consideraciones Importantes
+*Última actualización: 14-07-2026*
 
-## Reproducibilidad
-
-Todos los datasets incluidos en este proyecto corresponden a fuentes públicas y accesibles para la comunidad investigadora.
-
----
-
-## Preprocesamiento
-
-Dependiendo del enfoque experimental, los datasets podrán requerir:
-
-- limpieza de datos faltantes,
-- normalización,
-- agregación temporal,
-- generación de ventanas,
-- balanceo de clases,
-- etiquetado de anomalías,
-- y transformación de variables.
-
-Los scripts asociados estarán disponibles en:
-
-```text
-/src/preprocessing/
-```
-
----
-
-## Licenciamiento
-
-Cada dataset mantiene las condiciones de uso y licenciamiento definidas por su fuente original.
-
-Se recomienda consultar las referencias oficiales antes de utilizar los datos para fines comerciales o redistribución.
