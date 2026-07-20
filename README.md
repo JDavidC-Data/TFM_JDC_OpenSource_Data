@@ -1,22 +1,26 @@
-# Framework de Validación Cruzada para Detección de Anomalías en Redes Eléctricas Inteligentes
+# TFM_JDC_OpenSource_Data
 
-**Trabajo Fin de Máster** — Juan David Colorado Rodríguez (2026)
-
-Este repositorio contiene los recursos del TFM que evalúa la **robustez y capacidad de generalización** de distintos métodos de detección de anomalías mediante **validación cruzada** entre datasets.
+Repositorio de código y datos para el Trabajo Fin de Máster:  
+**"Evaluación Cruzada de Tres Técnicas de Detección de Anomalías en Redes Eléctricas"**  
+*Autor: Juan David Colorado Rodríguez*  
+*Director: Joaquín Arias Herrero*  
+*Fecha: 14-07-2026*
 
 ---
 
-## Nomenclatura (Muy Importante)
+**Metodologías evaluadas:**
+- **A1:** K-Means + LSTM (Fenza et al., 2019)
+- **A2:** Transformer + K-Means (Zhang et al., 2021)
+- **A3:** Clasificadores supervisados (Random Forest, XGBoost, SVM, Decision Tree) (Al-Karkhi et al., 2025)
 
-- **DS1** = ElectricityLoadDiagrams20112014  
-- **DS2** = Individual Household Electric Power Consumption  
-- **DS3** = Electrical Fault Detection and Classification  
+**Datasets utilizados:**
+- **DS1:** ElectricityLoadDiagrams20112014 (UCI)
+- **DS2:** Individual Household Electric Power Consumption (UCI)
+- **DS3:** Electrical Fault Detection and Classification (Kaggle)
 
-- **A1** = Método de Fenza et al. (2019) → K-Means + LSTM  
-- **A2** = Método de Zhang et al. (2021) → Transformer + K-Means  
-- **A3** = Método de Al-Karkhi et al. (2025) → Modelos supervisados (Random Forest, XGBoost, etc.)
+---
 
-**Ejemplo**: `DS1-A2` significa aplicar el método **A2** sobre el dataset **DS1** (validación cruzada).
+**Ejemplo**: `DS1-A2` significa aplicar el método **A2** sobre el dataset **DS1** (evaluación cruzada).
 
 ---
 
@@ -34,12 +38,12 @@ Este repositorio contiene los recursos del TFM que evalúa la **robustez y capac
 
 Cada notebook corresponde a una combinación **Dataset + Método**:
 
-### Validaciones Originales
+### Evaluaciones Originales
 - `DS1-A1.ipynb` → Método A1 en su dataset original
 - `DS2-A2.ipynb` → Método A2 en su dataset original  
 - `DS3-A3.ipynb` → Método A3 en su dataset original
 
-### Validaciones Cruzadas
+### Evaluaciones Cruzadas
 - `DS1-A2.ipynb`
 - `DS2-A3.ipynb`
 - `DS3-A2.ipynb` 
@@ -58,9 +62,7 @@ Cada notebook corresponde a una combinación **Dataset + Método**:
 
 - **`datasets/`** → Datos + documentación detallada de cada DS
 - **`notebooks/`** → Todos los experimentos (uno por combinación DS-Ay)
-- **`src/`** → Código modular reutilizable
 - **`results/`** → Resultados, tablas y figuras del TFM
-- **`docs/`** → Guías para el usuario
 - **`references/`** → Artículos científicos
 
 ---
@@ -71,8 +73,20 @@ Cada notebook corresponde a una combinación **Dataset + Método**:
 ---
 ## Cómo Usar Este Repositorio
 
+
+---
+
+## Requisitos
+
+- Python 3.9 o superior
+- Librerías principales: `numpy`, `pandas`, `tensorflow`, `scikit-learn`, `xgboost`, `matplotlib`, etc. (ver `requirements.txt`)
+
+- Clona el repositorio:
+   ```bash
+   git clone https://github.com/JDavidC-Data/TFM_JDC_OpenSource_Data.git
+   cd TFM_JDC_OpenSource_Data
 ```bash
 git clone https://github.com/JDavidC-Data/TFM_JDC_OpenSource_Data.git
 cd TFM_JDC_OpenSource_Data
 pip install -r requirements.txt
-jupyter lab
+jupyter lab notebooks/
